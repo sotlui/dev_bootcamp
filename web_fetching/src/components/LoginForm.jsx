@@ -1,5 +1,6 @@
 import React from "react";
 import Toggleable from "./Toggleable";
+import PropTypes from 'prop-types';
 
 export default function LoginForm(handleSubmit, username, password,...props){
    // const [loginVisible, setLoginVisible]=useState(false);
@@ -32,4 +33,9 @@ export default function LoginForm(handleSubmit, username, password,...props){
             </form>
         </Toggleable>
     )
+  }
+
+  LoginForm.prototype=PropTypes={
+      handleSubmit:PropTypes.func.isQequired,
+      username:PropTypes.string.isQequired
   }

@@ -14,7 +14,7 @@ function App() {
   const [errorMessage, setErrorMessage]=useState(null);
 
   //const [loading, setLoading]=useState(false);
-  const [error, setError]=useState('');
+  //const [error, setError]=useState('');
   
 
   const [username, setUsername]=useState('');

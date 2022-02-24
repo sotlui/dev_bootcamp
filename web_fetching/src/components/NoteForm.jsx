@@ -1,8 +1,9 @@
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
+import Toggleable from "./Toggleable";
 
 export default function NoteForm({addNote, handleLogout}){
     const [newNote, setNewNote] = useState('');
-
+    const toggableRef = useRef();
     const handleChange=(event)=>{
         setNewNote(event.target.value);
     }
@@ -15,11 +16,13 @@ export default function NoteForm({addNote, handleLogout}){
           }
           addNote(noteObject);
           setNewNote('');
+          //Accedemos siempre con current
+          toggableRef.current.toggleVisiblity();
     }
 
     return(
-        <div>
-            <h1>Create a nre note</h1>
+        <Toggleable buttonLabel='New Note' ref={toggableRef}>
+            <h1>Create a new note</h1>
             <form onSubmit={handleSubmit}>
                 <input 
                     placeholder='Write your note content'
@@ -32,6 +35,6 @@ export default function NoteForm({addNote, handleLogout}){
             <button onClick={handleLogout}>
                 Cerra Sesión
             </button>
-        </div>
+        </Toggleable>
     )
 }
